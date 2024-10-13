@@ -11,6 +11,7 @@ ReactDOM.render(
     domain={domain}
     clientId={clientId}
     redirectUri={window.location.origin}
+    cacheLocation="localstorage" // 确保状态持久化
   >
     <App />
   </Auth0Provider>,

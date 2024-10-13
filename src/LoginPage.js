@@ -41,6 +41,13 @@ const LoginPage = () => {
       }
     );
 
+
+    // 监听 authenticated 事件，确保登录完成后跳转
+    lock.on('authenticated', () => {
+        console.log('hello authththt')
+        window.location.href = `${window.location.origin}/profile`;
+    });
+
     lock.show();
 
     // 清理 Lock 实例
