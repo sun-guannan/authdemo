@@ -1,0 +1,117 @@
+/* src/LoginPage.css */
+.login-container {
+    display: flex;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+  }
+  
+  .left-panel {
+    flex: 1;
+    background-color: #1c1c1c;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .branding .logo {
+    width: 50px;
+    margin-bottom: 20px;
+  }
+  
+  .branding h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .branding p {
+    font-size: 14px;
+  }
+  
+  .branding footer {
+    position: absolute;
+    bottom: 20px;
+    font-size: 12px;
+  }
+  
+  .right-panel {
+    flex: 1;
+    background-color: #f9f9f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .login-form {
+    max-width: 300px;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .login-form h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .login-form p {
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+  
+  .login-form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .login-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .options {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+  }
+  
+  .options a {
+    font-size: 12px;
+    color: #000;
+    text-decoration: none;
+  }
+  
+  .social-login {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    cursor: pointer;
+  }
+  
+  .social-login.github {
+    color: #333;
+  }
+  
+  .social-login.google {
+    color: #4285f4;
+  }
+  
+  footer {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 12px;
+    color: #666;
+  }
+  
