@@ -1,13 +1,23 @@
 // src/LoginPage.js
 import React, { useEffect } from 'react';
 import Auth0Lock from 'auth0-lock';
+import { useAuth0 } from '@auth0/auth0-react';
 import './LoginPage.css';
-
 
 const domain = "dev-cktlo4j40x6gduwt.us.auth0.com";
 const clientId = "XJxZL8FdzvXmBY49OPx0RWpW39q7JlCE";
 
 const LoginPage = () => {
+  const { isAuthenticated, isLoading } = useAuth0();
+
+  useEffect(() => {
+    // 如果用户已登录且加载完成，则跳转到 profile 页面
+    if (isAuthenticated) {
+        console.log('hello ',isAuthenticated)
+      window.location.href = `${window.location.origin}/profile`;
+    }
+  }, [isAuthenticated, isLoading]);
+
   useEffect(() => {
     const lock = new Auth0Lock(
       clientId,
@@ -30,10 +40,6 @@ const LoginPage = () => {
         },
       }
     );
-
-  lock.on('authenticated', () => {
-    window.location.href = `${window.location.origin}/profile`;
-  });
 
     lock.show();
 
