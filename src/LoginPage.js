@@ -24,6 +24,7 @@ const LoginPage = () => {
       domain,
       {
         container: 'auth0-lock-container', // 使用容器的 ID 字符串
+        allowedConnections: ['Username-Password-Authentication'], // 确保使用正确的数据库连接
         auth: {
           redirectUrl: window.location.origin,
           responseType: 'token id_token',
