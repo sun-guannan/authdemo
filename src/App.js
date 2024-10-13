@@ -3,10 +3,14 @@ import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-d
 import { useAuth0 } from '@auth0/auth0-react';
 import LoginPage from './LoginPage';
 import Profile from './Profile';
-import LogoutButton from './components/LogoutButton';
 
 const App = () => {
-  const { isAuthenticated } = useAuth0();
+  const { isAuthenticated, isLoading } = useAuth0();
+
+  // 如果 Auth0 尚在加载用户身份状态时，显示加载状态
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <Router>
