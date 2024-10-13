@@ -31,7 +31,10 @@ const LoginPage = () => {
       }
     );
 
-    // 显示 Lock 登录表单
+  lock.on('authenticated', () => {
+    window.location.href = `${window.location.origin}/profile`;
+  });
+
     lock.show();
 
     // 清理 Lock 实例
