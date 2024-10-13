@@ -7,6 +7,8 @@ import Profile from './Profile';
 const App = () => {
   const { isAuthenticated, isLoading } = useAuth0();
 
+  console.log('hello ',isAuthenticated)
+
   // 如果 Auth0 尚在加载用户身份状态时，显示加载状态
   if (isLoading) {
     return <div>Loading...</div>;
