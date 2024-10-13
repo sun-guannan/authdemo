@@ -1,10 +1,42 @@
 // src/LoginPage.js
-import React from 'react';
-import { useAuth0 } from '@auth0/auth0-react';
+import React, { useEffect } from 'react';
+import Auth0Lock from 'auth0-lock';
 import './LoginPage.css';
 
+
+const domain = "dev-cktlo4j40x6gduwt.us.auth0.com";
+const clientId = "XJxZL8FdzvXmBY49OPx0RWpW39q7JlCE";
+
 const LoginPage = () => {
-  const { loginWithRedirect } = useAuth0();
+  useEffect(() => {
+    const lock = new Auth0Lock(
+      clientId,
+      domain,
+      {
+        container: 'auth0-lock-container', // 使用容器的 ID 字符串
+        auth: {
+          redirectUrl: window.location.origin,
+          responseType: 'token id_token',
+          params: {
+            scope: 'openid profile email',
+          },
+        },
+        theme: {
+          logo: 'icon.png',
+          primaryColor: '#31324F',
+        },
+        languageDictionary: {
+          title: "VideoLingo",
+        },
+      }
+    );
+
+    // 显示 Lock 登录表单
+    lock.show();
+
+    // 清理 Lock 实例
+    return () => lock.hide();
+  }, []);
 
   return (
     <div className="login-container">
@@ -17,30 +49,8 @@ const LoginPage = () => {
         </div>
       </div>
       <div className="right-panel">
-        <div className="login-form">
-          <h2>登录您的帐户</h2>
-          <p>请使用您的电子邮箱和密码登录</p>
-          <button
-            className="login-button"
-            onClick={() => loginWithRedirect({ screen_hint: 'login' })}
-          >
-            登录
-          </button>
-          <div className="options">
-            <a href="#" onClick={() => loginWithRedirect({ screen_hint: 'signup' })}>
-              前往创建
-            </a>
-            <a href="#">忘记密码</a>
-          </div>
-          <p>或继续使用</p>
-          <button
-            className="social-login google"
-            onClick={() => loginWithRedirect({ connection: 'google-oauth2' })}
-          >
-            Google
-          </button>
-          <p>点击继续，即表示您同意我们的使用条款和隐私政策</p>
-        </div>
+        {/* 为 Lock 组件容器指定一个 ID */}
+        <div id="auth0-lock-container" className="auth0-lock-container"></div>
       </div>
     </div>
   );
