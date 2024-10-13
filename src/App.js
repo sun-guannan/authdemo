@@ -19,7 +19,7 @@ const App = () => {
         <Route path="/" element={isAuthenticated ? <Navigate to="/profile" /> : <LoginPage />} />
 
         {/* 个人资料页面 */}
-        <Route path="/profile" element={isAuthenticated ? <Profile /> : <Navigate to="/" />} />
+        {/* <Route path="/profile" element={isAuthenticated ? <Profile /> : <Navigate to="/" />} /> */}
       </Routes>
     </Router>
   );
