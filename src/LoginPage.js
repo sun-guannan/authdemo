@@ -8,7 +8,7 @@ const domain = "dev-cktlo4j40x6gduwt.us.auth0.com";
 const clientId = "XJxZL8FdzvXmBY49OPx0RWpW39q7JlCE";
 
 const LoginPage = () => {
-  const { isAuthenticated, isLoading } = useAuth0();
+  const { isAuthenticated, isLoading, loginWithRedirect } = useAuth0();
 
   useEffect(() => {
     // 如果用户已登录且加载完成，则跳转到 profile 页面
@@ -16,7 +16,7 @@ const LoginPage = () => {
         console.log('hello ',isAuthenticated)
       window.location.href = `${window.location.origin}/profile`;
     }
-  }, [isAuthenticated, isLoading]);
+  }, [isAuthenticated]);
 
   useEffect(() => {
     const lock = new Auth0Lock(
@@ -44,15 +44,15 @@ const LoginPage = () => {
 
     // 监听 authenticated 事件，确保登录完成后跳转
     lock.on('authenticated', () => {
-        console.log('hello authththt')
-        window.location.href = `${window.location.origin}/profile`;
+      // 使用 loginWithRedirect 手动刷新 Auth0 状态
+      loginWithRedirect();
     });
 
     lock.show();
 
     // 清理 Lock 实例
     return () => lock.hide();
-  }, []);
+  }, [loginWithRedirect]);
 
   return (
     <div className="login-container">
