@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
 import LoginPage from './LoginPage';
-import Profile from './components/Profile';
+import Profile from './Profile';
 import LogoutButton from './components/LogoutButton';
 
 const App = () => {
