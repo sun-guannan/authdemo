@@ -15,7 +15,7 @@ const LoginPage = () => {
       {
         container: 'auth0-lock-container', // 使用容器的 ID 字符串
         auth: {
-          redirectUrl: `${window.location.origin}/profile`,
+          redirectUrl: window.location.origin,
           responseType: 'token id_token',
           params: {
             scope: 'openid profile email',
