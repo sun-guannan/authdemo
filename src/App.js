@@ -1,4 +1,5 @@
-import React from 'react';
+// src/App.js
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
 import LoginPage from './LoginPage';
@@ -7,7 +8,11 @@ import Profile from './Profile';
 const App = () => {
   const { isAuthenticated, isLoading } = useAuth0();
 
-  console.log('hello ',isAuthenticated)
+  // 调试：观察 isLoading 和 isAuthenticated 状态
+  useEffect(() => {
+    console.log('isLoading:', isLoading);
+    console.log('isAuthenticated:', isAuthenticated);
+  }, [isLoading, isAuthenticated]);
 
   // 如果 Auth0 尚在加载用户身份状态时，显示加载状态
   if (isLoading) {
