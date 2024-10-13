@@ -4,10 +4,10 @@ import { useAuth0 } from '@auth0/auth0-react';
 import './Profile.css'; // 确保引入样式文件
 
 const Profile = () => {
-  const { user, isAuthenticated, logout } = useAuth0();
+//   const { user, isAuthenticated, logout } = useAuth0();
 
   return <div>请先登录</div>;
-  
+
   if (!isAuthenticated) {
     return <div>请先登录</div>;
   }
